@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <context-param>
+        <param-name>resteasy.role.based.security</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>form-auth</realm-name>
+    </login-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Sem acesso</web-resource-name>
+            <url-pattern>/rest/autenticarssi/*</url-pattern>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Educacenso restful service</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>PUT</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <session-config>
+        <session-timeout>10</session-timeout>
+        <cookie-config>
+            <!--<path>/censobasico</path>-->
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+</web-app>

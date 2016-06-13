@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Relatórios - ${project.artifactId}" xmlns="http://maven.apache.org/DECORATION/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+    <body>
+        <menu name="Relatórios de Teste" inheritAsRef="true"
+            inherit="top">
+            <item name="JaCoCo Teste Unitário" href="jacoco/index.html" />
+            <item name="JaCoCo Teste Integração" href="jacoco-it/index.html" />
+            <item name="JaCoCo Todos Testes" href="jacoco-merged/index.html" />
+        </menu>
+        <menu name="Relatórios Qualidade de Código" inherit="bottom">
+            <item name="Relatório do FindBug" href="findbugs.html" />
+            <item name="Relatório do PMD" href="pmd.html" />
+            <item name="Relatório do CheckStyle" href="checkstyle.html" />
+            <item name="Relatório do CPD" title="Duplicações de Código"
+                href="cpd.html" />
+            <item name="Relatório do JDepend" href="jdepend-report.html"
+                title="Informações sobre ciclos de pacotes." />
+            <item name="Relatório do JQana" href="jqana-report.html" />
+        </menu>
+        <menu name="Relatórios do Sonar" inherit="bottom">
+            <item name="Relatório do Sonar" href="issues-report.html" />
+        </menu>
+        <menu name="Relatórios Conflitos de Dependências"
+            inheritAsRef="true" inherit="top">
+            <item name="TattleTail - Verificador de Dependências"
+                href="tattletale/index.html" />
+        </menu>
+        <menu name="Relatórios Segurança" inheritAsRef="true"
+            inherit="top">
+            <item name="OWASP - Vulnerabilidades de Dependências"
+                href="dependency-check-report.html" />
+        </menu>
+
+    </body>
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.3.1</version>
+    </skin>
+</project>

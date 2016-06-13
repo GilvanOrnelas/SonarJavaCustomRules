@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.goff</groupId>
+        <artifactId>quality</artifactId>
+        <version>RELEASE</version>
+    </parent>
+    <groupId>org.sonar.samples</groupId>
+    <artifactId>java-custom-rules</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>sonar-plugin</packaging>
+
+    <properties>
+        <java.plugin.version>3.8</java.plugin.version>
+
+        <quality.maven.plugins.failOnViolation>true</quality.maven.plugins.failOnViolation>
+        <maven.test.skip>false</maven.test.skip>
+
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.issuesReport.html.enable>true</sonar.issuesReport.html.enable>
+        <sonar.analysis.mode>preview</sonar.analysis.mode>
+        <sonar.findbugs.confidenceLevel>low</sonar.findbugs.confidenceLevel>
+        <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+        <sonar.issuesReport.html.location>../site/</sonar.issuesReport.html.location>
+    </properties>
+
+    <name>Java Custom Rules</name>
+    <description>Java Custom Rules</description>
+
+</project>

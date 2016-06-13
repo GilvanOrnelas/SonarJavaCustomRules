@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.goff.sonar</groupId>
+	<artifactId>custom-rules</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>sonar-plugin</packaging>
+
+	<properties>
+		<java.plugin.version>3.8</java.plugin.version>
+	</properties>
+
+	<name>Java Custom Rules</name>
+	<description>Java Custom Rules</description>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.sonar.sslr</groupId>
+				<artifactId>sslr-xpath</artifactId>
+				<version>1.20</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-channel</artifactId>
+				<version>4.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-graph</artifactId>
+				<version>4.5.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.7</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.code.findbugs</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>3.0.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.0.9</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-check-api</artifactId>
+				<version>4.5.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>3.0.17</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-plugin-api</artifactId>
+				<version>4.5.4</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.ow2.asm</groupId>
+				<artifactId>asm-debug-all</artifactId>
+				<version>5.0.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.picocontainer</groupId>
+				<artifactId>picocontainer</artifactId>
+				<version>2.14.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-colorizer</artifactId>
+				<version>4.5.4</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.codehaus.sonar</groupId>
+			<artifactId>sonar-plugin-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sonarsource.java</groupId>
+			<artifactId>sonar-java-plugin</artifactId>
+			<type>sonar-plugin</type>
+			<version>${java.plugin.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sonarsource.sslr-squid-bridge</groupId>
+			<artifactId>sslr-squid-bridge</artifactId>
+			<version>2.6.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.sonar.sslr</groupId>
+					<artifactId>sslr-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sonarsource.java</groupId>
+			<artifactId>java-squid</artifactId>
+			<version>${java.plugin.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sonarsource.java</groupId>
+			<artifactId>java-checks-testkit</artifactId>
+			<version>${java.plugin.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+				<artifactId>sonar-packaging-maven-plugin</artifactId>
+				<version>1.15</version>
+				<extensions>true</extensions>
+				<configuration>
+					<pluginClass>com.goff.rule.infra.starter.RulesPluginStarter</pluginClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+				<configuration>
+					<deployAtEnd>true</deployAtEnd>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.4.1</version>
+				<executions>
+					<execution>
+						<id>enforce</id>
+						<configuration>
+							<rules>
+								<dependencyConvergence />
+								<requireJavaVersion>
+									<version>[1.7,)</version>
+								</requireJavaVersion>
+							</rules>
+						</configuration>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

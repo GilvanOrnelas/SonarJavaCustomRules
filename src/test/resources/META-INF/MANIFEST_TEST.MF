@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: gilvan.fernandes
+Build-Jdk: 1.7.0_67
+Dependencies: com.oracle, com.h2database.h2, org.infinispan, org.hibernate

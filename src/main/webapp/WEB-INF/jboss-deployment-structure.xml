@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+	<deployment>
+		<dependencies>
+			<module name="org.hibernate.search.orm" services="export" />
+			<module name="org.codehaus.jackson.jackson-core-asl" />
+			<module name="org.codehaus.jackson.jackson-mapper-asl" />
+			<module name="com.google.guava" />
+		</dependencies>
+	</deployment>
+</jboss-deployment-structure>
