@@ -2,55 +2,30 @@
 
 # Project with custom quality rules executed with the Sonar 5.2^.
     
-    This project implements a lot of userful code quality rules, that I feel miss when using the Sonar. 
-    
-# To execute with Sonar
+# Testing
 
-The project uses an embedded maven to manage the dependencies and compile.
-To use the rules download the project and run the command:
+First, clone the project. Then build it:
     ./mvnw package
-Copy the generated JAR file to the Sonar server (${sonar_dir/extension/plugins} and restart the sonar.
+Copy the generated JAR file into the sonar server (${sonar_dir/extension/plugins} and restart it.
 All the rules shall appear in your repository.
     
 # Some rules availalbe
 
 #Single Responsibility Principle
         
-Follows the idea that each field from the Class shall be used by all it's not private methods. For example:
-    
-    ```
-    public class TwoResponsabilities {
-        private String fieldA;
-        private String fieldB;
-        private String fieldC;
-        ...
-        public void methodA () {
-            usesField(fieldA, fieldB);
-        }
-        
-        public void methodB () {
-            usesField(fieldC);
-        }
-    }
-    ```
-This class has 2 responsibilities. If we add the "fieldC" to methodA, and the fields "fieldA" and "fieldB" to the methodB, it will became to has only one responsibility.
-This way is not as elaborated as many solutions that we see, like the LCOM4 algorithm, but it had been proved very userful, and more important, it is easy to the developers to understand how it works, which means less complaints :)
+The solution is based on matching the class fields against the methods using them. Each combination of fields used by each method is considered one responsibility. The goal is to enforce all non-private methods to use all the class fields.
 
 #Try-With-Resources
-Identifies when resources are been closed with the finnaly block, instead from the very cool try-with-resource. I realy don't know why the sonar it self didn't implement this rule.
+Identifies when resources are being closed with the "finally" block and suggest replacing it with the try-with-resources.
 
 #Pom Checks
-Search for unallowed dependencies, third parties dependencipes, property values and dependencies versions.
-It is always good to know what is happening in your project.
+Search for unallowed dependencies, third parties dependencies, property values, and dependencies versions..
 
 #Null Assingments
-Despite some times be necessary (very rare), it is not good to initialise objects with null. If this happens a lot, soon or later it will be back to hunt you.
+Checks for null assignments.
 
-#Objects that receives it selfs as arguments
-Well, let's just say that this use to be a bad implementation to a domain, or object oriented model.
+#Self-argument objects.
+Checks for instance-objects receiving them selfs as an argument.
 
 #Package visibility
-Choose which package can use each other package.
-
-#Much more
-Probably the other rules, and even the ones above will not be very reused. But this is a very good example from how to use the plugin to create your own rules, and make the word a better place to code:)
+Check for package dependencies.
