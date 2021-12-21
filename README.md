@@ -2,7 +2,7 @@
 
 # Project with custom quality rules executed with the Sonar 5.2^.
     
-# Testing
+# Testing 
 
 First, clone the project. Then build it:
     ./mvnw package
